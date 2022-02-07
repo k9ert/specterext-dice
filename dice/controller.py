@@ -13,7 +13,7 @@ from cryptoadvance.specter.user import User
 from cryptoadvance.specter.wallet import Wallet
 
 from .service import DiceService
-from ..controller import user_secret_decrypted_required
+from cryptoadvance.specter.services.controller import user_secret_decrypted_required
 
 
 logger = logging.getLogger(__name__)
@@ -39,12 +39,11 @@ def check():
         current_blockheight=0,
         
     )
-    print("here")
 
     for tx in txlist:
-        print(tx)
-        if session.get(tx["txid"]) == None:
-            print(tx)
+        if tx["amount"] < 20:
+            if session.get(tx["txid"]) == None:
+                print(tx)
 
     return render_template(
         "dice/check.jinja", wallet=wallet, txlist=txlist,  services=app.specter.service_manager.services,

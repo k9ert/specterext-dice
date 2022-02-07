@@ -75,9 +75,8 @@
             vertical-align: text-bottom;
         }
     </style>
-    <img src="{{ url_for(service.id +'_endpoint' + '.static', filename=service.logo) }}" width="300"/>
-    Hello WOrld
-    Numer of wallets: <br>
+
+    Wallets: <br>
     {% for wallet in wallets %}
         <h1>{{ wallet.alias }} </h1>
         Try your luck: {{ wallet.get_address(1) }} 

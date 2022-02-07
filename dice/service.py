@@ -10,7 +10,7 @@ from cryptoadvance.specter.specter_error import SpecterError
 
 from cryptoadvance.specter.user import User
 
-from ..service import Service, devstatus_alpha
+from cryptoadvance.specter.services.service import Service, devstatus_alpha
 from cryptoadvance.specter.addresslist import Address
 from cryptoadvance.specter.wallet import Wallet
 
@@ -20,10 +20,11 @@ logger = logging.getLogger(__name__)
 class DiceService(Service):
     id = "dice"
     name = "Specter Dice"
-    icon = "spcterdice/img/spcterdice.svg"
-    logo = "spcterdice/img/spcterdice.svg"
+    icon = "dice/dice_logo.png"
+    logo = "dice/dice_logo.png"
     desc = "Send your bet!"
     has_blueprint = True
+    blueprint_module = "dice.controller"
     piggyback = False
     devstatus = devstatus_alpha
 
