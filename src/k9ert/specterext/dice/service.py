@@ -10,7 +10,7 @@ from cryptoadvance.specter.specter_error import SpecterError
 
 from cryptoadvance.specter.user import User
 
-from cryptoadvance.specter.services.service import Service, devstatus_alpha
+from cryptoadvance.specter.services.service import Service, devstatus_alpha, devstatus_prod
 from cryptoadvance.specter.addresslist import Address
 from cryptoadvance.specter.wallet import Wallet
 
@@ -26,7 +26,7 @@ class DiceService(Service):
     has_blueprint = True
     blueprint_module = "k9ert.specterext.dice.controller"
     isolated_client = False
-    devstatus = devstatus_alpha
+    devstatus = devstatus_prod
 
     # TODO: As more Services are integrated, we'll want more robust categorization and sorting logic
     sort_priority = 1
