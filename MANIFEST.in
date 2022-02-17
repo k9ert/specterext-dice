@@ -1,0 +1,5 @@
+recursive-include src/k9ert/specterext/dice/templates *
+recursive-include src/k9ert/specterext/dice/static *
+recursive-include src/k9ert/specterext/dice/*/LC_MESSAGES *.mo
+recursive-include src/k9ert/specterext/dice/translations/*/LC_MESSAGES *.po
+include requirements.txt

@@ -24,8 +24,8 @@ class DiceService(Service):
     logo = "dice/dice_logo.png"
     desc = "Send your bet!"
     has_blueprint = True
-    blueprint_module = "dice.controller"
-    piggyback = False
+    blueprint_module = "k9ert.specterext.dice.controller"
+    isolated_client = False
     devstatus = devstatus_alpha
 
     # TODO: As more Services are integrated, we'll want more robust categorization and sorting logic

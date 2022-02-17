@@ -23,6 +23,7 @@ dice_endpoint = DiceService.blueprint
 
 
 @dice_endpoint.route("/")
+@login_required
 def index():
     wallet_names = sorted(current_user.wallet_manager.wallets.keys())
     wallets = [current_user.wallet_manager.wallets[name] for name in wallet_names]

@@ -1,0 +1,1 @@
+{"user": "bitcoin", "password": "secret", "host": "localhost", "port": 18443, "url": "http://bitcoin:secret@localhost:18443/wallet/", "pid": 1448609, "specter_data_folder": "/home/kim/.specter_dev", "bitcoin_data_dir": "/tmp/specter_btc_regtest_plain_datadir"}
