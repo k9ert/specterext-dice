@@ -77,11 +77,12 @@
     </style>
 
     Wallets: <br>
-    {% for wallet in wallets %}
+    
         <h1>{{ wallet.alias }} </h1>
-        Try your luck: {{ wallet.get_address(1) }} 
+        Try your luck and send funds to this address: <br>
+        {{ wallet.get_address(10) }} 
 
-    {% endfor %}
+    
 {% endblock %}
 
 
