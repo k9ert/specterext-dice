@@ -28,7 +28,7 @@ def index():
     wallet_names = sorted(current_user.wallet_manager.wallets.keys())
     wallets = [current_user.wallet_manager.wallets[name] for name in wallet_names]
     return render_template(
-        "dice/index.jinja", wallets=wallets,
+        "dice/index.jinja", wallet=app.specter.ext["dice"].get_associated_wallet(),
     )
 
 
@@ -53,9 +53,8 @@ def check():
 
 @dice_endpoint.route("/settings", methods=["GET"])
 @login_required
-@user_secret_decrypted_required
 def settings_get():
-    associated_wallet: Wallet = DiceService.get_associated_wallet()
+    associated_wallet: Wallet = app.specter.ext["dice"].get_associated_wallet()
 
     # Get the user's Wallet objs, sorted by Wallet.name
     wallet_names = sorted(current_user.wallet_manager.wallets.keys())
@@ -70,7 +69,6 @@ def settings_get():
 
 @dice_endpoint.route("/settings", methods=["POST"])
 @login_required
-@user_secret_decrypted_required
 def settings_post():
     show_menu = request.form["show_menu"]
     user = app.specter.user_manager.get_user()
@@ -81,4 +79,5 @@ def settings_post():
     used_wallet_alias = request.form.get("used_wallet")
     if used_wallet_alias != None:
         wallet = current_user.wallet_manager.get_by_alias(used_wallet_alias)
+        app.specter.ext["dice"].set_associated_wallet(wallet)
     return redirect(url_for(f"{DiceService.get_blueprint_name()}.settings_get"))
